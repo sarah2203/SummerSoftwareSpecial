@@ -27,11 +27,11 @@ class Beach:
         self.time = 0
 
     def start(self):
-        print(self.sunset)
-        print(self.tide)
+        """
+        Start investigating the beach
+        """
         print("Welcome to the beach!")
 
-        # TODO - use variables
         print("The sun is shining and the tide is out!")
         print("However, if this changes it'll be time to leave the beach.")
 
@@ -46,6 +46,9 @@ class Beach:
             print("The tide came in. We have to leave the beach.")
 
     def play(self):
+        """
+        Go play on the beach
+        """
         print("What would you like to do?")
 
         # This is a dictionary used to select an activity
@@ -54,6 +57,9 @@ class Beach:
             print(activity_key + ": " + activities[activity_key])
 
         chosen_activity_key = input()
+        if chosen_activity_key not in activities.keys():
+            print("Hmmm, I don't recognise that option...")
+            self.play()
         chosen_activity = activities[chosen_activity_key]
         print(f"Great!! Let's {chosen_activity}")
 
@@ -72,7 +78,7 @@ class Beach:
         """
         print(f"I see your favourite animal is a {self.player.fav_animal}.")
         fav_animal_sandcastle = input(f"Shall we build a {self.player.fav_animal} sandcastle?")
-        if fav_animal_sandcastle == "yes":
+        if fav_animal_sandcastle == "yes" or fav_animal_sandcastle == "Yes":
             print(f"Built {self.player.fav_animal} sandcastle")
         else:
             sandcastle = input("Ok, what shall we build a sandcastle of?")
@@ -82,8 +88,14 @@ class Beach:
         """
         Go for a swim
         """
-        print("swim")
-        # TODO - add shark
+        print("Get in the sea!")
+        stroke = input("What stroke shall we swim?")
+        if stroke == "butterfly":
+            print("SHAAARRRRKKKKKKKK!!!")
+            print("Quick get out the water!")
+            return
+        print("What a lovely day!")
+        print("Let's do something else!")
 
     def sunbathe(self):
         """
@@ -120,5 +132,3 @@ class Beach:
             self.sun_shining = False
         if self.time > self.tide:
             self.tide_out = False
-
-
